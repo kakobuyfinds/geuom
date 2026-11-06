@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#243b53">
+  <meta name="color-scheme" content="light">
+  <title>Sugargoo spreadsheet – svensk guide till fynd, storlek och QC</title>
+  <meta name="description" content="Utforska Sugargoo spreadsheet med en svensk guide till skor, kläder och accessoarer. Jämför mått, granska QC-bilder och planera din inköpslista.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:title" content="Sugargoo spreadsheet – färre gissningar, bättre urval">
+  <meta property="og:description" content="En oberoende svensk guide till kategorier, passform, produktbilder och genomtänkta inköp. Kategorilänkarna leder till Cafans.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
+  <meta property="og:image:alt" content="Röd Nike-sneaker mot en röd bakgrund">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sugargoo spreadsheet – svensk köpguide">
+  <meta name="twitter:description" content="Hitta din kategori och lär dig jämföra storlek, material, QC och totalkostnad.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23243b53'/%3E%3Cpath d='M17 18h30v7H25v8h18v7H25v7h-8z' fill='%23f6d788'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <style>
+    :root {
+      --paper:#f6f3ec;
+      --white:#fffefa;
+      --ink:#203247;
+      --muted:#526273;
+      --line:#d4d9db;
+      --blue:#243b53;
+      --yellow:#f6d788;
+      --wash:#e7edf0;
+      --radius:18px;
+      --width:1160px;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-size:16px;
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+    }
+    a { color:inherit; text-underline-offset:4px; }
+    a:hover { text-decoration-thickness:2px; }
+    a:focus-visible,summary:focus-visible {
+      outline:3px solid #86621c;
+      outline-offset:5px;
+    }
+    img { display:block; max-width:100%; height:auto; }
+    figure { margin:0; }
+    h1,h2,h3,p { margin:0; }
+    h1,h2,h3 { line-height:1.16; letter-spacing:-.035em; }
+    h1 { font-size:clamp(2.55rem,5.2vw,4.6rem); max-width:760px; }
+    h2 { font-size:clamp(1.8rem,3vw,2.6rem); }
+    h3 { font-size:1.23rem; }
+    p+p { margin-top:1rem; }
+    .wrap { width:min(var(--width),calc(100% - 40px)); margin-inline:auto; }
+    .masthead {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding-block:23px;
+      border-bottom:1px solid var(--line);
+    }
+    .brand {
+      display:inline-flex;
+      align-items:center;
+      gap:11px;
+      font-size:1.03rem;
+      font-weight:850;
+      letter-spacing:.08em;
+      text-decoration:none;
+    }
+    .brand-mark {
+      display:grid;
+      place-items:center;
+      width:36px;
+      height:36px;
+      border-radius:9px;
+      color:var(--yellow);
+      background:var(--blue);
+      font-size:1.2rem;
+    }
+    .masthead-note { color:var(--muted); font-size:.84rem; }
+    .eyebrow {
+      display:block;
+      margin-bottom:15px;
+      color:var(--muted);
+      font-size:.74rem;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .intro { padding:43px 0 29px; }
+    .intro h1 span { color:#586d80; }
+    .intro p { max-width:735px; margin-top:21px; font-size:1.08rem; }
+    .category-panel {
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--white);
+    }
+    .category-top {
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:20px;
+      margin-bottom:18px;
+    }
+    .category-top h2 { font-size:1.25rem; }
+    .small { font-size:.85rem; color:var(--muted); }
+    .categories {
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:9px;
+    }
+    .categories a {
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:84px;
+      padding:13px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:var(--paper);
+      text-decoration:none;
+      transition:background .15s ease;
+    }
+    .categories a:hover { background:var(--yellow); }
+    .categories strong { font-size:.87rem; }
+    .categories span { font-size:.76rem; color:var(--muted); }
+    .hero {
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      margin-top:24px;
+      overflow:hidden;
+      border-radius:var(--radius);
+      background:var(--blue);
+      color:white;
+    }
+    .hero-copy { padding:40px; align-self:center; }
+    .hero .eyebrow { color:var(--yellow); }
+    .hero h2 { max-width:430px; font-size:clamp(2rem,3.5vw,3rem); }
+    .hero p { margin-top:20px; color:#e1e8ee; }
+    .hero figure { display:flex; flex-direction:column; background:#ad2535; }
+    .hero img { width:100%; height:100%; min-height:340px; object-fit:cover; }
+    .hero figcaption { padding:10px 16px; background:#1b2c3d; color:#e1e8ee; font-size:.75rem; }
+    .button {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:25px;
+      padding:12px 20px;
+      border-radius:8px;
+      background:var(--yellow);
+      color:#243247;
+      font-weight:800;
+      text-decoration:none;
+    }
+    .section { padding-top:62px; }
+    .section-head { max-width:730px; margin-bottom:26px; }
+    .section-head p { color:var(--muted); margin-top:14px; }
+    .answer {
+      display:grid;
+      grid-template-columns:160px 1fr;
+      gap:26px;
+      margin-top:28px;
+      padding:26px 0;
+      border-block:1px solid var(--line);
+    }
+    .answer strong { font-size:.85rem; }
+    .answer p { max-width:800px; }
+    .topics { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; }
+    .topic { padding:22px; border-radius:12px; background:var(--wash); }
+    .topic .number { display:block; margin-bottom:22px; color:#566c7f; font-size:.82rem; font-weight:800; }
+    .topic p { margin-top:12px; font-size:.94rem; }
+    .editorial {
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:32px;
+      align-items:start;
+    }
+    .editorial figure {
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#e8e8e8;
+    }
+    .editorial img { width:100%; aspect-ratio:1; object-fit:contain; }
+    .editorial figcaption { padding:16px 20px; background:var(--white); font-size:.82rem; }
+    .reading { display:grid; gap:16px; }
+    .article {
+      padding:25px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:var(--white);
+    }
+    .article h3 { margin-bottom:13px; font-size:1.35rem; }
+    .article p { font-size:.95rem; }
+    .article .eyebrow { margin-bottom:10px; }
+    .table-box {
+      overflow-x:auto;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:var(--white);
+    }
+    table { width:100%; border-collapse:collapse; min-width:600px; font-size:.94rem; }
+    caption { text-align:left; padding:20px; font-weight:750; }
+    th,td { padding:17px 20px; text-align:left; vertical-align:top; border-top:1px solid var(--line); }
+    thead th { background:var(--wash); font-size:.85rem; }
+    tbody th { width:22%; }
+    .notes {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:20px;
+    }
+    .note { padding:24px; border-radius:14px; background:#ebe5d7; }
+    .note p { margin-top:12px; font-size:.94rem; }
+    .faq-layout { display:grid; grid-template-columns:.7fr 1.3fr; gap:42px; }
+    details { border-top:1px solid var(--line); }
+    details:last-child { border-bottom:1px solid var(--line); }
+    summary {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:20px 0;
+      cursor:pointer;
+      font-weight:750;
+      list-style:none;
+      line-height:1.45;
+    }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:"+"; font-size:1.35rem; font-weight:400; }
+    details[open] summary::after { content:"−"; }
+    details p { padding:0 25px 22px 0; font-size:.95rem; }
+    .closing {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:30px;
+      margin-top:55px;
+      padding:32px;
+      border-radius:var(--radius);
+      background:var(--yellow);
+    }
+    .closing h2 { font-size:1.8rem; }
+    .closing p { margin-top:9px; max-width:670px; }
+    .closing .button { background:var(--blue); color:white; margin:0; white-space:nowrap; }
+    footer { margin-top:45px; padding-block:28px 35px; border-top:1px solid var(--line); }
+    footer p { max-width:900px; font-size:.81rem; color:var(--muted); }
+    footer .footer-line { display:flex; justify-content:space-between; gap:20px; margin-bottom:14px; }
+    footer strong { font-size:.85rem; }
+    @media (max-width:900px) {
+      .categories { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      .topics { grid-template-columns:repeat(2,1fr); }
+      .hero-copy { padding:28px; }
+      .editorial { grid-template-columns:1fr 1.2fr; gap:20px; }
+      .faq-layout { grid-template-columns:1fr; gap:10px; }
+    }
+    @media (max-width:620px) {
+      .wrap { width:calc(100% - 28px); }
+      .masthead { padding-block:16px; }
+      .masthead-note { max-width:110px; text-align:right; font-size:.72rem; }
+      .intro { padding-top:32px; }
+      .intro p { font-size:1rem; }
+      .category-panel { padding:16px; }
+      .category-top { display:block; }
+      .category-top .small { display:block; margin-top:6px; }
+      .categories { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .categories a { min-height:76px; }
+      .hero { grid-template-columns:1fr; }
+      .hero img { min-height:0; aspect-ratio:4/3; }
+      .hero-copy { padding:28px 23px; }
+      .answer { grid-template-columns:1fr; gap:10px; }
+      .section { padding-top:43px; }
+      .topics { gap:10px; }
+      .topic { padding:18px; }
+      .topic h3 { font-size:1.05rem; }
+      .editorial,.notes { grid-template-columns:1fr; }
+      .editorial img { aspect-ratio:4/3; }
+      .article { padding:21px; }
+      .closing { display:block; padding:25px; }
+      .closing .button { margin-top:21px; }
+      footer .footer-line { flex-direction:column; gap:6px; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      * { transition:none!important; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"WebPage",
+        "name":"Sugargoo spreadsheet – svensk guide till fynd, storlek och QC",
+        "description":"En oberoende svensk guide till produkturval, mått, bildgranskning och inköpsplanering. Kategorilänkarna leder till Cafans.",
+        "inLanguage":"sv",
+        "about":[
+          {"@type":"Thing","name":"Sugargoo spreadsheet"},
+          {"@type":"Thing","name":"Storleksguider för skor och kläder"},
+          {"@type":"Thing","name":"Granskning av QC-bilder"}
+        ]
+      },
+      {
+        "@type":"Article",
+        "headline":"Skor: börja med måttet, inte storleksnumret",
+        "description":"Jämför säljarens storlekstabell med fotlängd och innersula. Kontrollera tåutrymme och skons form.",
+        "inLanguage":"sv",
+        "articleBody":"En storleksguide för sneakers behöver läsas för den aktuella modellen. Mät fotlängden stående och jämför med säljarens tabell. Om en innersula mäts på bild behöver du veta om måttet avser hela sulan eller användbart utrymme. Kontrollera även skons bredd och tåform. Bilder på Nike eller Gucci här är stilreferenser, inte bevis på äkthet eller tillgängligt lager."
+      },
+      {
+        "@type":"Article",
+        "headline":"Kläder: jämför med ett plagg du redan använder",
+        "description":"En praktisk guide till bröstvidd, längd, axlar och ärmar vid jämförelse av kläder.",
+        "inLanguage":"sv",
+        "articleBody":"Lägg ett plagg som passar dig plant och mät bröstvidd, längd och ärm. Jämför sedan samma mätpunkter i säljarens tabell. För en hoodie med lös passform är axelbredd och utrymme över bröstet viktiga. För en jacka behöver du även plats för lagren under. Ett storleksnamn som M eller XL räcker inte som beslutsunderlag."
+      },
+      {
+        "@type":"FAQPage",
+        "inLanguage":"sv",
+        "mainEntity":[
+          {
+            "@type":"Question",
+            "name":"Vad är ett Sugargoo spreadsheet?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Det är en organiserad lista med produktlänkar som används för att hitta och jämföra varor inför köp via Sugargoo. Den här sidan är en svensk vägledning; länkarna här leder till Cafans kategorier eller startsida."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Är den här sidan en officiell Sugargoo-sida?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Nej. Det här är en oberoende guide utan påstådd officiell koppling till Sugargoo, Nike, Louis Vuitton, Gucci, Hermès eller Dior. Kategorilänkarna leder till Cafans."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Hur väljer jag rätt storlek på skor?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Mät fotlängden och jämför med den aktuella säljarens storlekstabell. Kontrollera även bredd och tåutrymme. Skilj mellan angiven fotlängd och uppmätt innersula."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Vad ska jag kontrollera på QC-bilder?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Kontrollera att modell, färg, storlek och antal stämmer. Granska sömmar, fläckar, synliga skador och efterfrågade mått. QC-bilder kan visa synliga avvikelser men bevisar inte äkthet eller långsiktig hållbarhet."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Visar guiden aktuella priser eller lagerstatus?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Nej. Kontrollera pris, variant, tillgänglighet och villkor på den aktuella produktsidan. Räkna även med möjliga kostnader för frakt, betalning och import."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Kan jag få varorna levererade till Sverige?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Det beror på den valda tjänsten, varan och tillgängliga fraktalternativ. Kontrollera leverans till din svenska adress, eventuella varubegränsningar och aktuella importvillkor innan du betalar."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/geuom/">
+</head>
+<body>
+  <!--
+    Filnamn: index.html.
+    Redaktionellt sökunderlag: sökningen "Sugargoo spreadsheet".
+    Sökresultaten används för ämnesval; en Google-specifik topp-tio-placering
+    har inte verifierats. Ingen text från andra webbplatser har kopierats.
+
+    Tio skilda domäner i sökunderlaget och deras återkommande ämnen:
+    sugargoo--spreadsheet.com: produktfynd, skor, kategorinavigering.
+    sugargo.net: produktlistor, kläder, kategorier.
+    sugargooo.com: produktlänkar, bilder, vanliga frågor.
+    sheetsugargoo.com: streetwear, skor, tröjor.
+    sugargootab.com: storlek, QC, fraktplanering.
+    repsheet.net: produktjämförelse, QC-bilder, källänkar.
+    sugargoox.com: mått, bildgranskning, prisjämförelse.
+    sugargoo.org: sporttröjor, accessoarer, kläder.
+    sugargoo--spreadsheets.com: produktfynd, kategorier, skor.
+    sugargoo-spreadsheets.org: kategoriguider, inköpsplanering, frågor.
+    Två domäner kunde bara bedömas utifrån sökutdrag eftersom sidöppningen misslyckades.
+
+    Fyra sekundära sökteman:
+    Sugargoo fynd; Sugargoo storleksguide; Sugargoo QC-bilder; Sugargoo köpguide.
+
+    Relaterade långsvansämnen integreras i vägledningen:
+    Sugargoo spreadsheet på svenska; produktlänkar för sneakers;
+    storleksguide för sneakers; fotlängd och innersula;
+    kontrollera skons bredd; välja hoodie med lös passform;
+    jämföra bröstvidd på tröjor; mäta längd på T-shirts;
+    jacka för lager på lager; byxor med rätt midjemått;
+    shorts med lagom benlängd; keps med justerbar passform;
+    matchande set i rätt storlek; material i underkläder;
+    passform på sporttröjor; jämföra accessoarernas mått;
+    granska sömmar på produktbilder; skillnad mellan produktbilder och QC;
+    kontrollera färg på QC-bilder; kontrollera storleksetiketten;
+    begära extra måttbilder; spara säljarens produktlänk;
+    planera en inköpslista; jämföra total kostnad före köp;
+    frakt till Sverige; packad vikt och paketmått;
+    kontrollera returvillkor före köp; jämföra materialbeskrivningar.
+  -->
+
+  <header class="wrap masthead">
+    <a class="brand" href="https://www.cafans.com" aria-label="Besök Cafans startsida">
+      <span class="brand-mark" aria-hidden="true">F</span>
+      FYND / ANTECKNINGAR
+    </a>
+    <span class="masthead-note">Svensk guide<br>Skor · kläder · detaljer</span>
+  </header>
+
+  <main class="wrap">
+    <section class="intro" aria-labelledby="main-title">
+      <span class="eyebrow">En genomtänkt garderob börjar med rätt frågor</span>
+      <h1 id="main-title">Sugargoo spreadsheet.<br><span>Hitta din riktning.</span></h1>
+      <p>För dig som söker ett Sugargoo spreadsheet på svenska: börja med rätt kategori och jämför sedan mått, material och bilder. Här får du en tydlig väg från inspiration till en användbar inköpslista.</p>
+    </section>
+
+    <nav class="category-panel" aria-label="Produktkategorier hos Cafans">
+      <div class="category-top">
+        <h2>Vad letar du efter?</h2>
+        <span class="small">Alla kategorier öppnas hos Cafans ↗</span>
+      </div>
+      <div class="categories">
+        <a href="https://cafans.com/category-911-Shoes.html">
+          <strong>Skor ↗</strong><span>Sneakers och andra skor</span>
+        </a>
+        <a href="https://cafans.com/category-912-Hoodies%2FSweaters.html">
+          <strong>Hoodies &amp; tröjor ↗</strong><span>Mjuka lager</span>
+        </a>
+        <a href="https://cafans.com/category-913-T-Shirts.html">
+          <strong>T-shirts ↗</strong><span>Basplagg och tryck</span>
+        </a>
+        <a href="https://cafans.com/category-914-Jackets.html">
+          <strong>Jackor ↗</strong><span>Det yttersta lagret</span>
+        </a>
+        <a href="https://cafans.com/category-915-Pants%2FShorts.html">
+          <strong>Byxor &amp; shorts ↗</strong><span>Midja, längd och form</span>
+        </a>
+        <a href="https://cafans.com/category-916-Headwear.html">
+          <strong>Huvudbonader ↗</strong><span>Kepsar och mössor</span>
+        </a>
+        <a href="https://cafans.com/category-917-Sets.html">
+          <strong>Matchande set ↗</strong><span>Överdel och underdel</span>
+        </a>
+        <a href="https://cafans.com/category-918-underwear%2Funderpants.html">
+          <strong>Underkläder ↗</strong><span>Material och komfort</span>
+        </a>
+        <a href="https://cafans.com/category-919-Jersey.html">
+          <strong>Sporttröjor ↗</strong><span>Passform för rörelse</span>
+        </a>
+        <a href="https://cafans.com/category-920-Accessories.html">
+          <strong>Accessoarer ↗</strong><span>Små detaljer</span>
+        </a>
+      </div>
+    </nav>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <span class="eyebrow">Stil börjar med användning</span>
+        <h2 id="hero-title">Välj ett plagg.<br>Bygg resten runt det.</h2>
+        <p>Ett par tydliga sneakers kan sätta färgen för hela kombinationen. Välj sedan en lugn bas, kontrollera proportionerna och lägg till en detalj som binder ihop uttrycket.</p>
+        <a class="button" href="https://www.cafans.com">Utforska hos Cafans ↗</a>
+      </div>
+      <figure>
+        <img
+          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=900&amp;q=78"
+          srcset="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=540&amp;q=78 540w, https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=900&amp;q=78 900w"
+          sizes="(max-width:620px) calc(100vw - 28px), 48vw"
+          width="900"
+          height="900"
+          alt="Röd Nike-sneaker med ljus sula mot en röd bakgrund"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async">
+        <figcaption>Nike som stilreferens. Bilden visar inte en verifierad Cafans-annons.</figcaption>
+      </figure>
+    </section>
+
+    <section class="answer" aria-label="Kort förklaring">
+      <strong>Vad är det?</strong>
+      <p>Ett <strong>Sugargoo spreadsheet</strong> är en organiserad lista med produktlänkar som används för att hitta och jämföra varor inför köp via Sugargoo. Den här sidan är en svensk vägledning; länkarna här leder till Cafans kategorier eller startsida.</p>
+    </section>
+
+    <section class="section" aria-labelledby="themes-title">
+      <div class="section-head">
+        <span class="eyebrow">Fyra teman att börja med</span>
+        <h2 id="themes-title">Från fynd till genomtänkt val</h2>
+        <p>En lista blir mer användbar när varje sparad produkt har ett tydligt syfte. Använd dessa fyra teman när du sorterar dina alternativ.</p>
+      </div>
+      <div class="topics">
+        <article class="topic">
+          <span class="number">01 / URVAL</span>
+          <h3>Sugargoo fynd</h3>
+          <p>Spara säljarens produktlänk, vald variant och varför du vill ha plagget. Ta bort sådant som bara upprepar det du redan har.</p>
+        </article>
+        <article class="topic">
+          <span class="number">02 / PASSFORM</span>
+          <h3>Sugargoo storleksguide</h3>
+          <p>Utgå från mått för den enskilda varan. Jämför med något som passar dig i stället för att lita på samma storleksbokstav överallt.</p>
+        </article>
+        <article class="topic">
+          <span class="number">03 / BILDER</span>
+          <h3>Sugargoo QC-bilder</h3>
+          <p>Skilj mellan säljarens produktbilder och bilder av den mottagna varan. Kontrollera rätt variant, storlek och synliga avvikelser.</p>
+        </article>
+        <article class="topic">
+          <span class="number">04 / PLANERING</span>
+          <h3>Sugargoo köpguide</h3>
+          <p>Jämför total kostnad före köp. Ta med produkt, frakt, eventuella avgifter och vad som gäller om varan behöver returneras.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="articles-title">
+      <div class="section-head">
+        <span class="eyebrow">Två korta artiklar</span>
+        <h2 id="articles-title">Passformen syns i detaljerna</h2>
+        <p>Produktlänkar för sneakers och kläder hjälper dig att hitta alternativ. Mått och tydliga bilder hjälper dig att välja mellan dem.</p>
+      </div>
+      <div class="editorial">
+        <figure>
+          <img
+            src="https://media.gucci.com/style/DarkGray_Center_0_0_490x490/1774629904/757892_AACAG_9055_001_100_0000_Light-mens-gucci-ace-sneaker-with-web.jpg"
+            width="490"
+            height="490"
+            alt="Vit Gucci Ace-sneaker med grön och röd sidoremsa"
+            loading="lazy"
+            decoding="async">
+          <figcaption>Gucci Ace som formreferens: lägg märke till tåform, profil och sulans proportioner. Bilden är ingen lageruppgift eller äkthetsbedömning.</figcaption>
+        </figure>
+        <div class="reading">
+          <article class="article">
+            <span class="eyebrow">Artikel 01 / Skor</span>
+            <h3>Skor: börja med måttet, inte storleksnumret</h3>
+            <p>En <strong>storleksguide för sneakers</strong> behöver läsas för den aktuella modellen. Mät fotlängden stående och jämför med säljarens tabell. Om en innersula mäts på bild behöver du veta om måttet avser hela sulan eller användbart utrymme.</p>
+            <p>Kontrollera även skons bredd och tåform. Bilder på Nike eller Gucci här är stilreferenser, inte bevis på äkthet eller tillgängligt lager.</p>
+          </article>
+          <article class="article">
+            <span class="eyebrow">Artikel 02 / Kläder</span>
+            <h3>Kläder: jämför med ett plagg du redan använder</h3>
+            <p>Lägg ett plagg som passar dig plant och mät bröstvidd, längd och ärm. Jämför sedan samma mätpunkter i säljarens tabell.</p>
+            <p>För en <strong>hoodie med lös passform</strong> är axelbredd och utrymme över bröstet viktiga. För en jacka behöver du även plats för lagren under. Ett storleksnamn som M eller XL räcker inte som beslutsunderlag.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="check-title">
+      <div class="section-head">
+        <span class="eyebrow">Praktisk jämförelse</span>
+        <h2 id="check-title">Vad behöver du veta innan du väljer?</h2>
+        <p>Anteckna de uppgifter som kan ändra ditt beslut. Om en viktig detalj saknas är nästa steg att fråga efter den.</p>
+      </div>
+      <div class="table-box" role="region" aria-label="Jämförelsetabell för produktkategorier" tabindex="0">
+        <table>
+          <caption>Mått och detaljer att spara i din inköpslista</caption>
+          <thead>
+            <tr>
+              <th scope="col">Kategori</th>
+              <th scope="col">Jämför detta</th>
+              <th scope="col">Be om förtydligande när</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Skor</th>
+              <td>Fotlängd, innersula, bredd och tåutrymme.</td>
+              <td>Tabellen inte skiljer mellan fotmått och sulmått.</td>
+            </tr>
+            <tr>
+              <th scope="row">Hoodies &amp; T-shirts</th>
+              <td>Bröstvidd, axelbredd, ärm och längd på T-shirts.</td>
+              <td>Det är oklart om bröstvidden avser ett plant mått eller omkrets.</td>
+            </tr>
+            <tr>
+              <th scope="row">Jackor</th>
+              <td>Utrymme för lager på lager, rygglängd och ärmslut.</td>
+              <td>Materialbeskrivningen saknar information om foder eller yttertyg.</td>
+            </tr>
+            <tr>
+              <th scope="row">Byxor &amp; shorts</th>
+              <td>Midjemått, gren, höftvidd och benlängd.</td>
+              <td>Det inte framgår om midjan mäts avslappnad eller utsträckt.</td>
+            </tr>
+            <tr>
+              <th scope="row">Huvudbonader &amp; set</th>
+              <td>Huvudomkrets, justering och separata mått för överdel och underdel.</td>
+              <td>Ett matchande set bara har en gemensam storleksangivelse.</td>
+            </tr>
+            <tr>
+              <th scope="row">Underkläder &amp; sporttröjor</th>
+              <td>Material i underkläder, elasticitet och passform på sporttröjor.</td>
+              <td>Fibersammansättning eller tillgängliga mått saknas.</td>
+            </tr>
+            <tr>
+              <th scope="row">Accessoarer</th>
+              <td>Längd, bredd, vikt där den anges, samt typ av lås eller fäste.</td>
+              <td>Bilderna saknar skala eller materialet är otydligt beskrivet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="notes">
+        <article class="note">
+          <h3>Bildgranskning med ett tydligt syfte</h3>
+          <p>Granska sömmar på produktbilder och kontrollera färg på QC-bilder med hänsyn till belysningen. Läs storleksetiketten och be om extra måttbilder när ett mått avgör passformen. En snygg bild ersätter inte en materialbeskrivning.</p>
+        </article>
+        <article class="note">
+          <h3>Planera frakt till Sverige</h3>
+          <p>Kontrollera leveransalternativ för din adress. Packad vikt och paketmått kan påverka fraktkostnaden. Läs returvillkor före köp och kontrollera vilka kostnader som ingår innan du bekräftar betalningen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section faq-layout" aria-labelledby="faq-title">
+      <div class="section-head">
+        <span class="eyebrow">Frågor &amp; raka svar</span>
+        <h2 id="faq-title">Det som är bra att reda ut först</h2>
+        <p>En kort kontroll kan spara både tid och onödiga omval.</p>
+      </div>
+      <div>
+        <details open>
+          <summary>Vad är ett Sugargoo spreadsheet?</summary>
+          <p>Det är en organiserad lista med produktlänkar som används för att hitta och jämföra varor inför köp via Sugargoo. Den här sidan är en svensk vägledning; länkarna här leder till Cafans kategorier eller startsida.</p>
+        </details>
+        <details>
+          <summary>Är den här sidan en officiell Sugargoo-sida?</summary>
+          <p>Nej. Det här är en oberoende guide utan påstådd officiell koppling till Sugargoo, Nike, Louis Vuitton, Gucci, Hermès eller Dior. Kategorilänkarna leder till Cafans.</p>
+        </details>
+        <details>
+          <summary>Hur väljer jag rätt storlek på skor?</summary>
+          <p>Mät fotlängden och jämför med den aktuella säljarens storlekstabell. Kontrollera även bredd och tåutrymme. Skilj mellan angiven fotlängd och uppmätt innersula.</p>
+        </details>
+        <details>
+          <summary>Vad ska jag kontrollera på QC-bilder?</summary>
+          <p>Kontrollera att modell, färg, storlek och antal stämmer. Granska sömmar, fläckar, synliga skador och efterfrågade mått. QC-bilder kan visa synliga avvikelser men bevisar inte äkthet eller långsiktig hållbarhet.</p>
+        </details>
+        <details>
+          <summary>Visar guiden aktuella priser eller lagerstatus?</summary>
+          <p>Nej. Kontrollera pris, variant, tillgänglighet och villkor på den aktuella produktsidan. Räkna även med möjliga kostnader för frakt, betalning och import.</p>
+        </details>
+        <details>
+          <summary>Kan jag få varorna levererade till Sverige?</summary>
+          <p>Det beror på den valda tjänsten, varan och tillgängliga fraktalternativ. Kontrollera leverans till din svenska adress, eventuella varubegränsningar och aktuella importvillkor innan du betalar.</p>
+        </details>
+      </div>
+    </section>
+
+    <aside class="closing" aria-label="Fortsätt till Cafans">
+      <div>
+        <h2>En bra lista börjar med ett bra val.</h2>
+        <p>Välj en kategori, jämför detaljerna och spara bara de alternativ som passar din garderob och din plan.</p>
+      </div>
+      <a class="button" href="https://www.cafans.com">Besök Cafans ↗</a>
+    </aside>
+  </main>
+
+  <footer class="wrap">
+    <div class="footer-line">
+      <strong>FYND / ANTECKNINGAR · Svensk vägledning</strong>
+      <a class="small" href="https://www.cafans.com">Cafans startsida ↗</a>
+    </div>
+    <p>Oberoende information om produkturval och inköpsplanering. Varumärken tillhör respektive ägare. Bilderna används som stilreferenser och innebär inte rekommendation, officiellt samarbete, verifierad äkthet eller bekräftad tillgänglighet. Kontrollera alltid produktuppgifter och villkor hos den tjänst eller säljare du väljer.</p>
+  </footer>
+</body>
+</html>
